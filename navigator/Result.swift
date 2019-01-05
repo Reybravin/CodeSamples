@@ -78,3 +78,19 @@ load { [weak self] result in
    }
 }
 */
+
+
+extension Result: Equatable {
+    static func ==(lhs: Result, rhs: Result) -> Bool {
+        switch (lhs, rhs) {
+        case (.success(let valueA), .success(let valueB)):
+            return valueA == valueB
+        case (.error(let errorA), .error(let errorB)):
+            return errorA == errorB
+        case (.success, .error):
+            return false
+        case (.error, .success):
+            return false
+        }
+    }
+}
