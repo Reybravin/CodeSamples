@@ -78,5 +78,3 @@ load { [weak self] result in
    }
 }
 */
-
-class LoadingError : Error {}
