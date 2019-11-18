@@ -27,18 +27,18 @@ class Utility {
     
 }
 
-func executeOnBackgroundThread(_ clouser: @escaping ()->()) {
+func executeOnBackgroundThread(_ closure: @escaping ()->()) {
     if Thread.isMainThread {
-        DispatchQueue.global().async(execute: clouser)
+        DispatchQueue.global().async(execute: closure)
     } else {
-        clouser()
+        closure()
     }
 }
 
-func executeOnMainThread(_ clouser: @escaping ()->()) {
+func executeOnMainThread(_ closure: @escaping ()->()) {
     if Thread.isMainThread {
-        clouser()
+        closure()
     } else {
-        DispatchQueue.main.async(execute: clouser)
+        DispatchQueue.main.async(execute: closure)
     }
 }
